@@ -2,27 +2,27 @@ public class HillStations{
     public void location(){
         System.out.println("Hill Station is surrounded by scenic mountains and valleys.");
     }
-    public void famous_For(){
-        System.out.println("Hill Station is famous for its cool climate, and adventorous activities like paragliding, and camping.");
+    public void famousFor(){
+        System.out.println("Hill Station is famous for its cool climate, and adventurous activities like paragliding, and camping.");
     }
     
     public static void main(String[] args){
         
         HillStations h = new HillStations();
         h.location();
-        h.famous_For();
+        h.famousFor();
 
-        Manali m = new Manali();
+        HillStations m = new Manali();
         m.location();
-        m.famous_For();
+        m.famousFor();
 
-        Mussorie ms = new Mussorie();
+        HillStations ms = new Mussoorie();
         ms.location();
-        ms.famous_For();
+        ms.famousFor();
 
-        Gulmarg g = new Gulmarg();
+        HillStations g = new Gulmarg();
         g.location();
-        g.famous_For();
+        g.famousFor();
     }
 
 }
@@ -34,19 +34,19 @@ class Manali extends HillStations{
         System.out.println("Manali is located in Himachal Pradesh, India.");
     }
     @Override
-    public void famous_For(){
+    public void famousFor(){
         System.out.println("Manali is famous for snowfall and adventure sports like skiing,  trekking and river rafting.");
     }
 }
 
-class Mussorie extends HillStations{
+class Mussoorie extends HillStations{
 
     @Override
     public void location(){
         System.out.println("Mussoorie is located in Uttarakhand, India.");
     }
     @Override
-    public void famous_For(){
+    public void famousFor(){
         System.out.println("Mussoorie is famous for Landour, scenic waterfalls and cozy cafes.");
     }
 }
@@ -58,7 +58,7 @@ class Gulmarg extends HillStations{
         System.out.println("Gulmarg is located in Jammu and Kashmir, India.");
     }
     @Override
-    public void famous_For(){
+    public void famousFor(){
         System.out.println("Gulmarg is famous for its ski resorts, the Gulmarg Gondola, and floral meadows.");
     }
 }
