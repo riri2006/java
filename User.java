@@ -1,21 +1,20 @@
 public class User {
 
-    String username = "admin";
-    int password = 1234;
+    static String username = "admin";
+    static int password = 1234;
 
-    public void login(String username, int password) {
+    public static void login(String userName, int passWord) {
 
-        if (this.username.equals(username) && this.password == password) {
+        if (userName.equals(username) && passWord == password) {
             System.out.println("Login successful!");
         } else {
-            throw new ArithmeticException("Invalid username or password.");
+            throw new ArithmeticException("INVALIDDDDDDD CREDENTIALSSSSSS");
         }
     }
 
     public static void main(String[] args) {
 
-        User user = new User();
-        user.login("admin", 1234);
-        user.login("admin", 4321);
+        login("admin", 1234);
+        login("admin", 4321);
     }
 }
