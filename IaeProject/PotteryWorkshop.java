@@ -1,46 +1,51 @@
 import java.util.Scanner;
 
-abstract class Participant {
 
+abstract class Participant {
+    // Encapsulation
     private String name;
     private int age;
 
-    // Constructor ->
+    // Constructor
     public Participant(String name, int age) {
         this.name = name;
         this.age = age;
     }
 
-    // Encapsulation ->
     public void showDetails() {
         System.out.println("Name: " + name);
         System.out.println("Age: " + age);
     }
 
-    public void discount() {
-        System.out.println("No discount");
-    }
+    // Abstract method for polymorphism
+    public abstract double discount(double fee);
 }
 
+
+// Inheritance
 class Student extends Participant {
 
     public Student(String name, int age) {
         super(name, age);
     }
 
-    // Polymorphism
-    public void discount() {
-        System.out.println("Student gets 20% discount");
+    // Polymorphism - Method Overriding
+    @Override
+    public double discount(double fee) {
+        System.out.println("Discount: 20% (Student)");
+        return fee * 0.80;
     }
 }
-
+// Inheritance
 class Adult extends Participant {
 
     public Adult(String name, int age) {
         super(name, age);
     }
-    public void discount() {
-        System.out.println("Adult gets 5% discount");
+    @Override
+    public double discount(double fee) {
+        System.out.println("Discount: 5% (Adult)");
+        return fee * 0.95;
     }
 }
 
@@ -52,94 +57,81 @@ public class PotteryWorkshop {
         Scanner sc = new Scanner(System.in);
 
         try {
-
             System.out.println("===== POTTERY ART WORKSHOP =====");
 
-            //Scanner
+            // Input
             System.out.print("Enter name: ");
             String name = sc.nextLine();
 
             System.out.print("Enter age: ");
             int age = sc.nextInt();
 
-            // Exception handling
+            // Age validation
             if (age < 5 || age > 80) {
-                throw new Exception("Invalid age");
+                throw new Exception("Invalid age. Age must be between 5 and 80.");
             }
 
-            System.out.println("\nSelect Participant Type:");
-            System.out.println("1. Student");
+            // Participant selection
+            System.out.println("\n1. Student");
             System.out.println("2. Adult");
-
-            System.out.print("Enter choice: ");
+            System.out.print("Select participant type: ");
             int choice = sc.nextInt();
 
-            Participant p;
+            Participant participant;
 
             if (choice == 1) {
-
-                p = new Student(name, age);
-
-            }
+                participant = new Student(name, age);
+            } 
             else if (choice == 2) {
-
-                p = new Adult(name, age);
-
-            }
+                participant = new Adult(name, age);
+            } 
             else {
-
-                throw new Exception("Invalid participant type");
+                throw new Exception("Invalid participant type.");
             }
-
 
             // Workshop selection
-            System.out.println("\nSelect Workshop:");
-            System.out.println("1. Pot Making - Rs. 600");
+            System.out.println("\n1. Pot Making - Rs. 600");
             System.out.println("2. Ganpati Idol Colouring - Rs. 400");
-
-            System.out.print("Enter choice: ");
-            int workshop = sc.nextInt();
+            System.out.print("Select workshop: ");
+            int workshopChoice = sc.nextInt();
 
             double fee;
+            String workshopName;
 
-            if (workshop == 1) {
-
-                System.out.println("Workshop: Pot Making");
+            if (workshopChoice == 1) {
+                workshopName = "Pot Making";
                 fee = 600;
-
-            }
-            else if (workshop == 2) {
-
-                System.out.println("Workshop: Ganpati Idol Colouring");
+            } 
+            else if (workshopChoice == 2) {
+                workshopName = "Ganpati Idol Colouring";
                 fee = 400;
-
-            }
+            } 
             else {
-
-                throw new Exception("Invalid workshop choice");
+                throw new Exception("Invalid workshop choice.");
             }
 
+            // Apply discount using polymorphism
+            double finalFee = participant.discount(fee);
+            double discountAmount = fee - finalFee;
 
-            // Display registration details
+            // Display details
             System.out.println("\n===== REGISTRATION DETAILS =====");
 
-            p.showDetails();
+            participant.showDetails();
 
-            p.discount();
+            System.out.println("Workshop: " + workshopName);
+            System.out.println("Original Fee: Rs. " + fee);
+            System.out.println("Discount Amount: Rs. " + discountAmount);
+            System.out.println("Final Fee: Rs. " + finalFee);
 
-            System.out.println("Workshop Fee: Rs. " + fee);
+            System.out.println("\nRegistration Successful!");
 
-            System.out.println("Registration Successful!");
-
-        }
+        } 
         catch (Exception e) {
-
-            System.out.println("Error: " + e.getMessage());
-
-        }
+            System.out.println("\nError: " + e.getMessage());
+        } 
         finally {
-
-            System.out.println("Thank you!");
+            System.out.println("Thank you for visiting!");
             sc.close();
         }
     }
