@@ -20,15 +20,12 @@ abstract class Participant {
     // Abstract method for polymorphism
     public abstract double discount(double fee);
 }
-
-
 // Inheritance
 class Student extends Participant {
 
     public Student(String name, int age) {
         super(name, age);
     }
-
     // Polymorphism - Method Overriding
     @Override
     public double discount(double fee) {
