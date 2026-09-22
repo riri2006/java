@@ -10,5 +10,8 @@ public class CollectionEg {
         System.out.println(name);
         name.add("Abhishek");
         System.out.println(name);
-    }
+
+        name.remove(3);
+        System.out.println(name);
+    } 
 }
