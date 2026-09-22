@@ -4,6 +4,8 @@ import java.util.List;
 public class CollectionEg {
     public static void main(String[] args) {
         List <String> name = new ArrayList<>();
+
+    //ADD ELEMENTS TO THE LIST
         name.add("Riddhi");
         name.add("Vedant");
         name.add("Kishu");
